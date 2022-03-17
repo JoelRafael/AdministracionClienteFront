@@ -1,0 +1,49 @@
+table {
+  width: 100%;
+}
+table th{
+  background-color: #3f51b5;
+  color: white;
+
+}
+.formulario{
+float:left;
+padding: 1% !important;
+width: 20%;
+
+}
+.tabla{
+  float:right;
+  width: 70%;
+  padding: 1% !important;
+}
+.headeform{
+  background-color: #3f51b5;
+  width: 100% !important;
+  text-align: center;
+  color: white;
+}
+.cardform{
+  padding: 0!important;
+}
+.form{
+  padding: 5px!important;
+  min-width: 150px;
+  max-width: 500px;
+}
+.example-full-width {
+  width: 100%;
+}
+
+.view{
+color: rgb(12, 189, 65);
+cursor: pointer;
+}
+.update{
+color: #3f51b5;
+cursor: pointer;
+}
+.footherform{
+  padding-left: 30%;
+}
+

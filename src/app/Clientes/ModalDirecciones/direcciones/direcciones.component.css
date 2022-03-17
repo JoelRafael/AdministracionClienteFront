@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+.titulo{
+  text-align: center;
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+}
+.nombrecliente{
+  text-align: center;
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+}
+table th{
+  background-color: #3f51b5;
+  color: white;
+}
+.foother{
+  padding-left: 51%;
+}
+.form{
+  padding: 5px!important;
+  min-width: 150px;
+  max-width: 500px;
+}
+.example-full-width {
+  width: 100%;
+}
+.footherform{
+  padding-left: 26%;
+}
