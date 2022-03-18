@@ -21,7 +21,7 @@ import { DireccionesComponent } from '../ModalDirecciones/direcciones/direccione
 import { ToastrService } from 'ngx-toastr';
 import { AdministracionService } from '../../services/Administracion/administracion.service';
 import { Subject } from 'rxjs';
-//import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-clientes',
@@ -44,15 +44,14 @@ export class ClientesComponent implements OnInit, AfterViewInit, OnDestroy {
   empresa: any;
   json: any;
   idcliente = 0;
-  private _unsubscribeAll: Subject<any>;
+  private suscripcions: Subscription[] = [];
+
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
     private toastr: ToastrService,
     private service: AdministracionService
-  ) {
-    this._unsubscribeAll = new Subject();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.FormVali();
@@ -61,11 +60,7 @@ export class ClientesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.getclientes();
   }
   ngOnDestroy(): void {
-    /*if (this.subscription) {
-      this.subscription.unsubscribe;
-    }*/
-    //this._unsubscribeAll.next();
-    this._unsubscribeAll.complete();
+    this.suscripcions.forEach((sub) => sub.unsubscribe);
   }
   ngAfterViewInit() {
     // this.dataSource.paginator = this.paginator;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdministracionService } from '../../services/Administracion/administracion.service';
@@ -9,12 +9,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-empresas',
   templateUrl: './empresas.component.html',
   styleUrls: ['./empresas.component.css'],
 })
-export class EmpresasComponent implements OnInit, AfterViewInit {
+export class EmpresasComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns: string[] = [
     'Posiciones',
     'Nombre',
@@ -23,6 +24,7 @@ export class EmpresasComponent implements OnInit, AfterViewInit {
   ];
   formgroup = new FormGroup({});
   dataSource = new MatTableDataSource<any>();
+  private suscripcions: Subscription[] = [];
   constructor(
     private services: AdministracionService,
     private fb: FormBuilder,
@@ -33,6 +35,9 @@ export class EmpresasComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.allempresas();
     this.FormVali();
+  }
+  ngOnDestroy(): void {
+    this.suscripcions.forEach((sub) => sub.unsubscribe);
   }
   ngAfterViewInit() {
     // this.dataSource.paginator = this.paginator;

@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

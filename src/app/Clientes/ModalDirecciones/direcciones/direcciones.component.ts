@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
@@ -7,6 +7,7 @@ import {
 import { ClientesComponent } from '../../clientes/clientes.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 import {
   FormBuilder,
   FormControl,
@@ -20,11 +21,12 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './direcciones.component.html',
   styleUrls: ['./direcciones.component.css'],
 })
-export class DireccionesComponent implements OnInit {
+export class DireccionesComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['position', 'direccion'];
   dataSource = new MatTableDataSource<any>();
   bolean = 0;
   formgroup = new FormGroup({});
+  private suscripcions: Subscription[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<ClientesComponent>,
@@ -38,6 +40,9 @@ export class DireccionesComponent implements OnInit {
     this.FormVali();
     console.log(this.data);
     this.getdirecciones();
+  }
+  ngOnDestroy(): void {
+    this.suscripcions.forEach((sub) => sub.unsubscribe);
   }
   FormVali() {
     this.formgroup = this.fb.group({
